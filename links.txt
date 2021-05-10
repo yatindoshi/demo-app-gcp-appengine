@@ -1,0 +1,14 @@
+https://cloud.google.com/docs/authentication/production
+https://cloud.google.com/docs/authentication/production#windows
+https://cloud.google.com/iam/docs/impersonating-service-accounts#attaching-to-resources
+https://cloud.google.com/iam/docs/granting-changing-revoking-access
+https://stackoverflow.com/questions/48972977/unable-to-obtain-credentials-to-communicate-with-the-cloud-sql-api-remote-host/48973743
+https://cloud.google.com/sdk/auth_success
+https://codelabs.developers.google.com/codelabs/cloud-app-engine-springboot#8
+https://dzone.com/articles/spring-boot-and-postgresql
+https://www.baeldung.com/spring-boot-google-app-engine
+
+psql "sslmode=disabled dbname=DemoApp user=postgres hostaddr=34.68.88.136"
+
+
+https://cloud.google.com/sql/docs/postgres/configure-ssl-instance#new-client
