@@ -18,6 +18,7 @@ public class DemoController {
     }
 
     @GetMapping("/users/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public User searchUser(@PathVariable("id") Integer id){
         return userService.findUser(id);
     }

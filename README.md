@@ -13,12 +13,12 @@
     3.c. Create a `registration` database in the MySQL instance
     >gcloud sql databases create registration --instance demoapp
    
-    3.d. Use CLI to connect to the database
-    >gcloud sql connect guestbook
+    3.d. Use CLI to connect to the demoapp instance
+    >gcloud sql connect demoapp
    * Root  password is blank by default.
     
-    3.e. Switch to the demoapp database
-    >use demoapp
+    3.e. Switch to the `registration` database
+    >use registration
     
     3.f.  Create the table
     ```
@@ -51,6 +51,27 @@
 
 5. Run the application with cloud profile.
 
+###### Add Tracing
+* NOTE: There is spring boot version compatibility issue so had to lower the version
+1. Enable Trace API
+   >gcloud services enable cloudtrace.googleapis.com
+2. Add trace dependency
+   ```xml
+        <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-gcp-starter-trace</artifactId>
+        </dependency>
+3. Enable tracing in cloud profile
+   >spring.cloud.gcp.trace.enabled=true
+   spring.sleuth.sampler.probability=1.0
+   spring.sleuth.scheduled.enabled=false
+4. Setup service account
+   >gcloud iam service-accounts create demoapp
+5. Add the Editor role for your project to this service account
+   >gcloud projects add-iam-policy-binding demoapp-312515 --member serviceAccount:demoapp@demoapp-312515.iam.gserviceaccount.com --role roles/editor
+6. Generate the JSON key file using cloud console to be used by the application to identify itself using the service account.
+7. Run the application with cloud profile.
+8. Observe the tracing in cloud console  
 ###References
 * https://mydeveloperplanet.com/2019/04/10/deploy-spring-boot-app-to-gcp-app-engine/
 * https://cloud.google.com/appengine/docs/standard/java/maven-reference
